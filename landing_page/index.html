@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VidMatic</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>VidMatic - Streamline Your Video Production</h1>
+    </header>
+
+    <!-- Product Description Section -->
+    <div class="description">
+        <h2>Mass Batch Video Editing: Craft Your Viral Saga</h2>
+        <p>Unleash the power of high-volume, high-impact video production with features designed for creators who mean
+            business:</p>
+        <ul>
+            <li><strong>Automated Precision:</strong> Effortlessly cut videos into standard-length clips, perfect for
+                social media.</li>
+            <li><strong>Adaptive Aspect Ratios:</strong> Transform your videos to fit any platform with adjustable
+                aspect ratios.</li>
+            <li><strong>Captions in a Click:</strong> Add captivating subtitles in multiple languages, enhancing global
+                reach.</li>
+            <li><strong>Seamless Clip Combining:</strong> Merge clips to create compelling narratives that captivate
+                audiences.</li>
+            <li><strong> <u>Smart Features</u> on the way:</strong> Use the power of AI to automatically select only
+                the best
+                clips from your content.</li>
+        </ul>
+        <p>Equip yourself with a tool that’s more than just an editor – it’s your shortcut to creating content that
+            resonates and grows your following fast.</p>
+    </div>
+
+    <div class="container">
+        <!-- GIFs Section -->
+        <div class="gifs">
+            <h2>Efficiency in Action</h2>
+            <div class="gif-container">
+                <img src="assets/gif_roger_clip_1.gif" alt="Product GIF 1">
+                <img src="assets/gif_WLIIA_1.gif" alt="Product GIF 2">
+                <img src="assets/gif_roger_clip_2.gif" alt="Product GIF 3">
+            </div>
+        </div>
+
+        <!-- Email Sign-up Form Section -->
+        <div class="signup-form">
+            <h2>Stay Updated!</h2>
+            <p>Sign up to receive the latest news about our product. Let us know what features you'd like to see!</p>
+            <form id="emailForm">
+                <input type="email" id="email" name="email" placeholder="Your email address" required>
+                <input type="submit" value="Subscribe">
+            </form>
+            <p id="formResponse"></p>
+        </div>
+    </div>
+    <!-- JavaScript for Form Submission -->
+    <script>
+        document.getElementById("emailForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            var formData = new FormData(e.target);
+            var object = {};
+            formData.forEach(function (value, key) {
+                object[key] = value;
+            });
+            var json = JSON.stringify(object);
+
+            fetch('https://script.google.com/macros/s/AKfycbwCdWZlHm96IROmYmoWJKpnKeiDSsBi4oY4V87ahNAT3fPgCl5kS-9TVD5gd-e2dwyP/exec', {
+                method: 'POST',
+                mode: 'no-cors',
+                cache: 'no-cache',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: json
+            }).then(function (response) {
+                document.getElementById("formResponse").innerText = "Thank you for subscribing!";
+            });
+        });
+    </script>
+</body>
+
+</html>
