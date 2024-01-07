@@ -1,2 +1,3 @@
 *.gif
 landing_page/assets/
+.DS_Store
