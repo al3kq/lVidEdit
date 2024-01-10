@@ -50,7 +50,7 @@
             <p>Sign up to receive the latest news about our product. Let us know what features you'd like to see!</p>
             <form id="emailForm">
                 <input type="email" id="email" name="email" placeholder="Your email address" required>
-                <input type="submit" value="Subscribe">
+                <input type="submit" id="submitBtn" value="Subscribe">
             </form>
             <p id="formResponse"></p>
         </div>
@@ -59,6 +59,12 @@
     <script>
         document.getElementById("emailForm").addEventListener("submit", function (e) {
             e.preventDefault();
+
+            // Disable the submit button to prevent multiple submissions
+            var submitBtn = document.getElementById("submitBtn");
+            submitBtn.value = "Subscribing..."; // Change button text
+            submitBtn.disabled = true; // Disable the button
+
             var formData = new FormData(e.target);
             var object = {};
             formData.forEach(function (value, key) {
@@ -76,6 +82,13 @@
                 body: json
             }).then(function (response) {
                 document.getElementById("formResponse").innerText = "Thank you for subscribing!";
+                submitBtn.value = "Subscribe"; // Reset button text
+                submitBtn.disabled = false; // Re-enable the button
+            }).catch(function (error) {
+                // Handle any errors here
+                document.getElementById("formResponse").innerText = "There was an error, please try again.";
+                submitBtn.value = "Subscribe";
+                submitBtn.disabled = false;
             });
         });
     </script>

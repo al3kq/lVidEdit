@@ -126,6 +126,16 @@ header h1 {
     font-size: 1.1em;
 }
 
+.signup-form input[type=submit]:disabled,
+.signup-form input[type=submit]:disabled:hover {
+    background-color: #ffc107;
+    /* A different color, e.g., yellow for 'processing' state */
+    color: #000;
+    /* Optional: change text color for better readability */
+    cursor: not-allowed;
+    /* Change cursor to indicate that the button is disabled */
+}
+
 .signup-form input[type=submit]:hover {
     background-color: #218838;
 }
